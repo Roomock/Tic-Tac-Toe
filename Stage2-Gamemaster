@@ -1,0 +1,8 @@
+# write your code here
+xs_os = str(input("Enter cells: "))
+
+print("---------")
+print("| " + xs_os[0] + " " + xs_os[1] + " " + xs_os[2] + " |")
+print("| " + xs_os[3] + " " + xs_os[4] + " " + xs_os[5] + " |")
+print("| " + xs_os[6] + " " + xs_os[7] + " " + xs_os[8] + " |")
+print("---------")
