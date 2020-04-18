@@ -1,0 +1,142 @@
+# write your code here
+xs_os = str(input("Enter cells: "))
+xs = 0
+os = 0
+space = 0
+
+
+# Game setup
+def setup():
+    print("---------")
+    print("| " + xs_os[0] + " " + xs_os[1] + " " + xs_os[2] + " |")
+    print("| " + xs_os[3] + " " + xs_os[4] + " " + xs_os[5] + " |")
+    print("| " + xs_os[6] + " " + xs_os[7] + " " + xs_os[8] + " |")
+    print("---------")
+
+
+def xing():
+    print("X wins")
+
+
+def oing():
+    print("O wins")
+
+
+def impossible():
+    print("Impossible")
+
+
+# count up
+for s in xs_os:
+    if s == "X":
+        xs += 1
+    elif s == "O":
+        os += 1
+    elif s == " " or s == "_":
+        space += 1
+
+# rows - only here to help check off situations
+topRow = xs_os[0], xs_os[1], xs_os[2]
+middleRow = xs_os[3], xs_os[4], xs_os[5]
+bottomRow = xs_os[6], xs_os[7], xs_os[8]
+
+# columns - only here to help check off situations
+firstColumn = xs_os[0], xs_os[3], xs_os[6]
+secondColumn = xs_os[1], xs_os[4], xs_os[7]
+lastColumn = xs_os[2], xs_os[5], xs_os[8]
+
+# diagonal
+topRightToBottom = xs_os[0], xs_os[4], xs_os[8]
+bottomRightToTop = xs_os[6], xs_os[4], xs_os[2]
+
+straightX = "X", "X", "X"
+straightO = "O", "O", "O"
+
+
+def x_o_win():
+    # impossibles
+    if xs > 5 or os > 5:
+        impossible()
+    elif xs - 2 == os:
+        impossible()
+    elif os - 2 == xs:
+        impossible()
+# X winning options
+# Rows
+    elif xs_os[0] == "X" and xs_os[1] == "X" and xs_os[2] == "X":
+        if xs_os[3] == "O" and xs_os[4] == "O" and xs_os[5] == "O":
+            impossible()
+        elif xs_os[6] == "O" and xs_os[7] == "O" and xs_os[8] == "O":
+            impossible()
+        else:
+            xing()
+    elif xs_os[3] == "X" and xs_os[4] == "X" and xs_os[5] == "X":
+        if xs_os[0] == "O" and xs_os[1] == "O" and xs_os[2] == "O":
+            impossible()
+        elif xs_os[6] == "O" and xs_os[7] == "O" and xs_os[8] == "O":
+            impossible()
+        else:
+            xing()
+    elif xs_os[6] == "X" and xs_os[7] == "X" and xs_os[8] == "X":
+        if xs_os[0] == "O" and xs_os[1] == "O" and xs_os[2] == "O":
+            impossible()
+        elif xs_os[3] == "O" and xs_os[4] == "O" and xs_os[5] == "O":
+            impossible()
+        else:
+            xing()
+# Columns
+    elif xs_os[0] == "X" and xs_os[3] == "X" and xs_os[6] == "X":
+        if xs_os[1] == "O" and xs_os[4] == "O" and xs_os[7] == "O":
+            impossible()
+        elif xs_os[2] == "O" and xs_os[5] == "O" and xs_os[8] == "O":
+            impossible()
+        else:
+            xing()
+    elif xs_os[1] == "X" and xs_os[4] == "X" and xs_os[7] == "X":
+        if xs_os[0] == "O" and xs_os[3] == "O" and xs_os[6] == "O":
+            impossible()
+        elif xs_os[2] == "O" and xs_os[5] == "O" and xs_os[8] == "O":
+            impossible()
+        else:
+            xing()
+    elif xs_os[2] == "X" and xs_os[5] == "X" and xs_os[8] == "X":
+        if xs_os[1] == "O" and xs_os[4] == "O" and xs_os[7] == "O":
+            impossible()
+        elif xs_os[0] == "O" and xs_os[3] == "O" and xs_os[6] == "O":
+            impossible()
+        else:
+            xing()
+# Diagonals
+    elif xs_os[2] == "X" and xs_os[4] == "X" and xs_os[6] == "X":
+        xing()
+    elif xs_os[0] == "X" and xs_os[4] == "X" and xs_os[8] == "X":
+        xing()
+# O winning options
+# Rows
+    elif xs_os[0] == "O" and xs_os[1] == "O" and xs_os[2] == "O":
+        oing()
+    elif xs_os[3] == "O" and xs_os[4] == "O" and xs_os[5] == "O":
+        oing()
+    elif xs_os[6] == "O" and xs_os[7] == "O" and xs_os[8] == "O":
+        oing()
+# Columns
+    elif xs_os[0] == "O" and xs_os[3] == "O" and xs_os[6] == "O":
+        oing()
+    elif xs_os[1] == "O" and xs_os[4] == "O" and xs_os[7] == "O":
+        oing()
+    elif xs_os[2] == "O" and xs_os[5] == "O" and xs_os[8] == "O":
+        oing()
+# Diagonals
+    elif xs_os[2] == "O" and xs_os[4] == "O" and xs_os[6] == "O":
+        oing()
+    elif xs_os[0] == "O" and xs_os[4] == "O" and xs_os[8] == "O":
+        oing()
+    elif space == 0:
+        print("Draw")
+    else:
+        print("Game not finished")
+
+
+# run the game
+setup()
+x_o_win()
